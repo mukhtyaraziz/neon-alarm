@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Neon Precision Alarm</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <meta name="theme-color" content="#00ff66">
+    <link rel="manifest" href="/manifest.json">
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <!-- Clock Display Section -->
+    <div class="clock-display">
+        <div class="time" id="clock">00:00:00<span class="ampm-display" id="ampm">AM</span></div>
+        <div class="date-display" id="dateDisplay">Monday • October 23, 2026</div>
+    </div>
+
+    <div class="container">
+        <!-- Control Panel -->
+        <div class="control-panel">
+            <h3>Add New Alarm</h3>
+            <div class="input-group">
+                <input type="number" id="hourInput" class="time-input" placeholder="HH" min="1" max="12" value="12">
+                <input type="number" id="minuteInput" class="time-input" placeholder="MM" min="0" max="59" value="00">
+                <select id="ampmInput" class="time-input">
+                    <option value="AM">AM</option>
+                    <option value="PM">PM</option>
+                </select>
+            </div>
+            <button id="setAlarmBtn" class="btn-primary">Set Alarm</button>
+            
+            <div style="margin-top: 20px;">
+                <h3>System Status</h3>
+                <p style="font-size: 12px; color: var(--text-dim); line-height: 1.8;">
+                    Audio Engine: <span style="color: var(--accent-neon)">Authenticated</span><br>
+                    Next Alarm: <span style="color: var(--text-primary)" id="nextAlarmStatus">None</span><br>
+                    Precision: <span style="color: var(--text-primary)">+/- 1ms</span>
+                </p>
+            </div>
+        </div>
+
+        <!-- Alarm List Section -->
+        <div class="alarm-list-container">
+            <h3 id="alarmCountLabel">Active Alarms (0)</h3>
+            <div id="alarmsList" class="alarms-list">
+                <!-- Alarms injected here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Status Footer -->
+    <div class="status-footer">
+        <div class="status-item"><span>●</span> Web Audio API Enabled</div>
+        <div class="status-item"><span>●</span> LocalStorage: Persistence OK</div>
+        <div class="status-item"><span>●</span> Precision: Crystal Sync</div>
+    </div>
+
+    <!-- Trigger Overlay -->
+    <div id="triggerOverlay" class="trigger-overlay">
+        <div class="trigger-content">
+            <div id="triggerClock" class="time" style="margin-bottom: 1rem; font-size: 4rem;">12:00:00</div>
+            <h2>WAKE UP!</h2>
+            <div style="display: flex; gap: 20px; justify-content: center;">
+                <button id="snoozeBtn" class="btn-primary" style="padding: 20px 40px; border-radius: 50px;">SNOOZE (5M)</button>
+                <button id="dismissBtn" class="btn-primary dismiss-btn">DISMISS</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="/script.js"></script>
+</body>
+</html>
+
+
+
